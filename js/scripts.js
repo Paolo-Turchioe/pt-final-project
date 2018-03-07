@@ -1,13 +1,18 @@
 
 var map = L.map('my-map').setView([37.8, -96], 3);
 
-L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-background/{z}/{x}/{y}.{ext}', {
-	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png', {
+	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
 	subdomains: 'abcd',
 	minZoom: 3,
 	maxZoom: 10,
 	ext: 'png'
 }).addTo(map);
+
+// var CartoDB_DarkMatterOnlyLabels = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_only_labels/{z}/{x}/{y}.png', {
+// 	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+// 	subdomains: 'abcd',
+// 	maxZoom: 19
 
 scrollWheelZoom: false
 map.once('focus', function() { map.scrollWheelZoom.enable(); });
@@ -24,20 +29,20 @@ L.geoJson(statesData).addTo(map);
 
 //this is basically an if/else statement, so if it's greater than 50 mil it would be the top hex, but it would cycle down to if >20
 function getColor(d) {
-    return d > 5  ? '#7a0177' :
-           d > 4  ? '#ae017e' :
-           d > 3  ? '#dd3497' :
-           d > 2   ? '#f768a1' :
-           d > 1   ? '#fa9fb5' :
-           d > 0   ? '#fcc5c0' :
-                      '#fcc5c0';
+    return d > 5  ? '#006d2c' :
+           d > 4  ? '#2ca25f' :
+           d > 3  ? '#66c2a4' :
+           d > 2   ? '#99d8c9' :
+           d > 1   ? '#ccece6' :
+           d > 0   ? '#edf8fb' :
+                      '#ffffff';
 }
 function style(feature) {
     return {
         fillColor: getColor(feature.properties.unemployment),
         weight: .5,
         opacity: 1,
-        color: 'black',
+        color: 'white',
         dashArray: '1',
         fillOpacity: 0.7
     };
@@ -72,15 +77,15 @@ geojson = L.geoJson(statesData, {
     onEachFeature: onEachFeature
 }).addTo(map);
 
-function zoomToFeature(e) {
-    map.fitBounds(e.target.getBounds());
-}
+// function zoomToFeature(e) {
+//     map.fitBounds(e.target.getBounds());
+// }
 
 function onEachFeature(feature, layer) {
     layer.on({
         mouseover: highlightFeature,
         mouseout: resetHighlight,
-        click: zoomToFeature
+        // click: zoomToFeature
     });
 			}
 var info = L.control();
@@ -91,8 +96,8 @@ var info = L.control();
 		    return this._div;
 		};
 		info.update = function (props) {
-		    this._div.innerHTML = '<h4>Wine Production</h4>' +  (props ?
-		        '<b>' + props.name + '</b><br />' + props.unemployment + ' unemployment rate'
+		    this._div.innerHTML = '<h4>Unemployment Rate</h4>' +  (props ?
+		        '<b>' + props.name + '</b><br />' + props.unemployment + '%'
 		        : 'Hover over a state');
 		};
 		info.addTo(map);
@@ -106,7 +111,7 @@ var legend = L.control({position: 'bottomright'});
 legend.onAdd = function (map) {
 
     var div = L.DomUtil.create('div', 'info legend'),
-        grades = [0, 10, 20, 50, 100, 200, 500, 1000],
+        grades = [1, 2, 3, 4, 5],
         labels = [];
 
     // loop through our density intervals and generate a label with a colored square for each interval
