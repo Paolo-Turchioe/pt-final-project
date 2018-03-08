@@ -9,10 +9,6 @@ L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z
 	ext: 'png'
 }).addTo(map);
 
-// var CartoDB_DarkMatterOnlyLabels = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_only_labels/{z}/{x}/{y}.png', {
-// 	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
-// 	subdomains: 'abcd',
-// 	maxZoom: 19
 
 scrollWheelZoom: false
 map.once('focus', function() { map.scrollWheelZoom.enable(); });
