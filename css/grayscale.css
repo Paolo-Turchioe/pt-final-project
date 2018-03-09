@@ -190,6 +190,7 @@ a:focus, a:hover {
 #my-map {
   width: 100%;
   height: 500px;
+  min-height: 300px;
   border: 2px solid white;
 }
 
@@ -200,6 +201,7 @@ a:focus, a:hover {
   }
   #my-map {
     height: 500px;
+    min-height: 300px;
     border: 2px solid white;
   }
 }

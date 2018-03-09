@@ -9,7 +9,7 @@ L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z
 	ext: 'png'
 }).addTo(map);
 
-
+//this allows for a way to disabale and enable the scroll when going over the map
 scrollWheelZoom: false
 map.once('focus', function() { map.scrollWheelZoom.enable(); });
 map.on('click', function() {
@@ -21,9 +21,9 @@ map.on('click', function() {
     }
   });
 
-L.geoJson(statesData).addTo(map);
+L.geoJson(unemploymentdata).addTo(map);
 
-//this is basically an if/else statement, so if it's greater than 50 mil it would be the top hex, but it would cycle down to if >20
+//this is basically an if/else statement, so if it's greater than 5 it would be the top hex, but if less it will go down to 4
 function getColor(d) {
     return d > 5  ? '#006d2c' :
            d > 4  ? '#2ca25f' :
@@ -33,6 +33,8 @@ function getColor(d) {
            d > 0   ? '#edf8fb' :
                       '#ffffff';
 }
+
+//this colors the states according to their data and also includes other styling, like outlines
 function style(feature) {
     return {
         fillColor: getColor(feature.properties.unemployment),
@@ -44,46 +46,50 @@ function style(feature) {
     };
 }
 
-L.geoJson(statesData, {style: style}).addTo(map);
+//this is the data, including state outline
+L.geoJson(unemploymentdata, {style: style}).addTo(map);
 
+//this function sets up what happens when hovering over a state
 function highlightFeature(e) {
     var layer = e.target;
 
+//the function above uses this below to outline the state in a thick white outline
     layer.setStyle({
         weight: 3,
         color: 'white',
         dashArray: '',
         fillOpacity: 0.7
     });
-		info.update(layer.feature.properties);
 
+//the function above uses this to populate the top right with data
+		info.update(layer.feature.properties);
 		if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
         layer.bringToFront();
 		}}
 
+//this function resets the white outline and data in the top right if you stop hovering over it
 function resetHighlight(e) {
     geojson.resetStyle(e.target);
 		info.update();
 }
 
+//state data layer
 var geojson;
-
-geojson = L.geoJson(statesData, {
+geojson = L.geoJson(unemploymentdata, {
     style: style,
     onEachFeature: onEachFeature
 }).addTo(map);
 
-// function zoomToFeature(e) {
-//     map.fitBounds(e.target.getBounds());
-// }
+// L.control.layers(unemploymentdata).addTo(map);
 
 function onEachFeature(feature, layer) {
     layer.on({
         mouseover: highlightFeature,
         mouseout: resetHighlight,
-        // click: zoomToFeature
     });
 			}
+
+//adds info to the top right corner
 var info = L.control();
 
 		info.onAdd = function (map) {
@@ -98,25 +104,25 @@ var info = L.control();
 		};
 		info.addTo(map);
 
+//reset button
 		$('.reset').click(function() {
   map.flyTo([37.8, -96], 3)
 });
 
+//adds leged to the bottom right
 var legend = L.control({position: 'bottomright'});
 
 legend.onAdd = function (map) {
-
     var div = L.DomUtil.create('div', 'info legend'),
         grades = [1, 2, 3, 4, 5],
         labels = [];
 
-    // loop through our density intervals and generate a label with a colored square for each interval
+// a label with a colored square for each interval
     for (var i = 0; i < grades.length; i++) {
         div.innerHTML +=
             '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
             grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
     }
-
     return div;
 };
 

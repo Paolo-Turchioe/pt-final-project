@@ -18,6 +18,10 @@
   border-radius: 7px;
 }
 
+#myModal {
+  color: dimgrey;
+}
+
 h2  {
   margin: 0;
 }
@@ -25,16 +29,6 @@ h2  {
 
 .leaflet-fade-anim .leaflet-popup {
   transition: none;
-}
-
-#legend {
-  float: right;
-  background: #FFF;
-  padding: 12px;
-  border-style:solid;
-  border-color:grey;
-  border-radius: 7px;
-  margin-left: 15px;
 }
 
 .colorBox {
@@ -59,7 +53,7 @@ h2  {
 
 .legend {
     line-height: 18px;
-    color: #555;
+    color: #FFF;
 }
 .legend i {
     width: 18px;

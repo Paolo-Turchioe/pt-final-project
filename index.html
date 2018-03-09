@@ -81,7 +81,6 @@
             <p>Placeholder</p>
             <p>Placeholder 2</p>
             <p>Placeholder 3</p>
-            <p>Placeholder 4</p>
             <a href="#my-map" class="btn btn-circle js-scroll-trigger">
               <i class="fa fa-angle-double-down animated"></i>
             </a>
@@ -94,8 +93,33 @@
     <div id="my-map">
         <button class="reset" id="reset">Reset View</button>
     </div>
+    <div class="row justify-content-md-center">
+    <div class="col-md-3" align="center">
+      <h3></h3>
+      <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
+        About the Data
+      </button>
+    </div>
+  </div>
     <!-- <div class= "info"></div> -->
 
+    <!--modal button that describes data sources-->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Source</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body"><p>Source: BLS Data 2017</p></div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Thank you</button>
+            </div>
+          </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer>
