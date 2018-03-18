@@ -1,5 +1,7 @@
-var map = L.map('my-map').setView([37.8, -96], 3);
-	  layers: [group1, group2],
+var map = L.map('my-map',
+	{layers: [group1, group2]})
+		.setView([37.8, -96], 3);
+	{},
 
 L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png', {
 	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
