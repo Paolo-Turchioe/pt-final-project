@@ -81,11 +81,6 @@ var info = L.control();
 		};
 		info.addTo(map);
 
-//reset button
-		$('.reset').click(function() {
-  map.flyTo([37.8, -96], 3)
-});
-
 //adds leged to the bottom right
 var legend = L.control({position: 'bottomright'});
 

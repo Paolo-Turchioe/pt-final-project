@@ -2,11 +2,11 @@ L.geoJson(participationdata).addTo(map);
 
 //this is basically an if/else statement, so if it's greater than 5 it would be the top hex, but if less it will go down to 4
 function getColor(d) {
-    return d > 5  ? '#006d2c' :
-           d > 4  ? '#2ca25f' :
-           d > 3  ? '#66c2a4' :
-           d > 2   ? '#99d8c9' :
-           d > 1   ? '#ccece6' :
+    return d > 69  ? '#006d2c' :
+           d > 66 ? '#2ca25f' :
+           d > 63 ? '#66c2a4' :
+           d > 60   ? '#99d8c9' :
+           d > 57   ? '#ccece6' :
            d > 0   ? '#edf8fb' :
                       '#ffffff';
 }
@@ -81,10 +81,7 @@ var info = L.control();
 		};
 		info.addTo(map);
 
-//reset button
-		$('.reset').click(function() {
-  map.flyTo([37.8, -96], 3)
-});
+
 
 //adds leged to the bottom right
 var legend = L.control({position: 'bottomright'});

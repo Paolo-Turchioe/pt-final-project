@@ -1,7 +1,13 @@
+var participation=	import * as participation from '/js/participation.js'
+		});
+var unemployment=	import * as unemployment from '/js/Unemployment.js'
+		});
+var group1 = L.layerGroup(participation);
+var group2 = L.layerGroup(unemployment);
+
 var map = L.map('my-map',
 	{layers: [group1, group2]})
 		.setView([37.8, -96], 3);
-	{},
 
 L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png', {
 	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
@@ -10,13 +16,6 @@ L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z
 	maxZoom: 10,
 	ext: 'png'
 }).addTo(map);
-
-var participation=	$.getScript("participation.js", function() {
-		});
-var unemployment=	$.getScript("participation.js", function() {
-		});
-var group1 = L.layerGroup(participation);
-var group2 = L.layerGroup(unemployment);
 
 // add layer control
 L.control.layers({}, {
@@ -33,6 +32,11 @@ function handleLayerToggle(eventLayer) {
 var type = eventLayer.type;
 var name = eventLayer.name;
 
+//reset button
+		$('.reset').click(function() {
+  map.flyTo([37.8, -96], 3)
+});
+
 //this allows for a way to disabale and enable the scroll when going over the map
 scrollWheelZoom: false
 map.once('focus', function() { map.scrollWheelZoom.enable(); });
@@ -43,4 +47,4 @@ map.on('click', function() {
     else {
     map.scrollWheelZoom.enable();
     }
-  });
+  });}
