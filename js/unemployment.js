@@ -1,5 +1,3 @@
-// L.geoJson(unemploymentdata).addTo(map);
-
 //this is basically an if/else statement, so if it's greater than 5 it would be the top hex, but if less it will go down to 4
 function getColor(d) {
     return d > 5  ? '#006d2c' :
@@ -22,9 +20,6 @@ function style(feature) {
         fillOpacity: 0.7
     };
 }
-
-//this is the data, including state outline
-L.geoJson(unemploymentdata, {style: style}).addTo(map);
 
 //this function sets up what happens when hovering over a state
 function highlightFeature(e) {
@@ -57,8 +52,6 @@ geojson = L.geoJson(unemploymentdata, {
     onEachFeature: onEachFeature
 }).addTo(map);
 
-// L.control.layers(unemploymentdata).addTo(map);
-
 function onEachFeature(feature, layer) {
     layer.on({
         mouseover: highlightFeature,
@@ -67,24 +60,24 @@ function onEachFeature(feature, layer) {
 			}
 
 //adds info to the top right corner
-var info = L.control();
+var unemploymentinfo = L.control();
 
-		info.onAdd = function (map) {
+		unemploymentinfo.onAdd = function (map) {
 		    this._div = L.DomUtil.create('div', 'info');
 		    this.update();
 		    return this._div;
 		};
-		info.update = function (props) {
+		unemploymentinfo.update = function (props) {
 		    this._div.innerHTML = '<h4>Unemployment Rate</h4>' +  (props ?
 		        '<b>' + props.name + '</b><br />' + props.unemployment + '%'
 		        : 'Hover over a state');
 		};
-		info.addTo(map);
+		unemploymentinfo.addTo(map);
 
 //adds leged to the bottom right
-var legend = L.control({position: 'bottomright'});
+var unemploymentlegend = L.control({position: 'bottomright'});
 
-legend.onAdd = function (map) {
+unemploymentlegend.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend'),
         grades = [1, 2, 3, 4, 5],
         labels = [];
@@ -98,4 +91,4 @@ legend.onAdd = function (map) {
     return div;
 };
 
-legend.addTo(map);
+unemploymentlegend.addTo(map);

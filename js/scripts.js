@@ -1,8 +1,8 @@
-// var group1 = L.layerGroup(participation);
-// var group2 = L.layerGroup(unemployment);
+var group1 = L.layerGroup(participationdata);
+var group2 = L.layerGroup(unemploymentdata);
 
 var map = L.map('my-map',
-	// {layers: [group1, group2]})
+	{layers: [group1, group2]})
 		.setView([37.8, -96], 3);
 
 L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png', {
@@ -19,20 +19,6 @@ L.control.layers({}, {
 	unemployment: group2,
 }).addTo(map);
 
-// add event listeners for overlayadd and overlayremove
-map.on('overlayadd', handleLayerToggle);
-map.on('overlayremove', handleLayerToggle);
-
-function handleLayerToggle(eventLayer) {
-// get the name of the layergroup, and whether it is being added or removed
-var type = eventLayer.type;
-var name = eventLayer.name;
-
-//reset button
-		$('.reset').click(function() {
-  map.flyTo([37.8, -96], 3)
-});
-
 //this allows for a way to disabale and enable the scroll when going over the map
 scrollWheelZoom: false
 map.once('focus', function() { map.scrollWheelZoom.enable(); });
@@ -43,4 +29,4 @@ map.on('click', function() {
     else {
     map.scrollWheelZoom.enable();
     }
-  });}
+  });

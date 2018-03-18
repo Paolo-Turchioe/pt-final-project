@@ -1,13 +1,10 @@
-// L.geoJson(participationdata).addTo(map);
-
 //this is basically an if/else statement, so if it's greater than 5 it would be the top hex, but if less it will go down to 4
 function getColor(d) {
     return d > 69  ? '#006d2c' :
            d > 66 ? '#2ca25f' :
            d > 63 ? '#66c2a4' :
            d > 60   ? '#99d8c9' :
-           d > 57   ? '#ccece6' :
-           d > 0   ? '#edf8fb' :
+           d > 40   ? '#ccece6' :
                       '#ffffff';
 }
 
@@ -22,9 +19,6 @@ function style(feature) {
         fillOpacity: 0.7
     };
 }
-
-//this is the data, including state outline
-L.geoJson(participationdata, {style: style}).addTo(map);
 
 //this function sets up what happens when hovering over a state
 function highlightFeature(e) {
@@ -57,8 +51,6 @@ geojson = L.geoJson(participationdata, {
     onEachFeature: onEachFeature
 }).addTo(map);
 
-// L.control.layers(participationdata).addTo(map);
-
 function onEachFeature(feature, layer) {
     layer.on({
         mouseover: highlightFeature,
@@ -67,28 +59,28 @@ function onEachFeature(feature, layer) {
 			}
 
 //adds info to the top right corner
-var info = L.control();
+var participationinfo = L.control();
 
-		info.onAdd = function (map) {
+		participationinfo.onAdd = function (map) {
 		    this._div = L.DomUtil.create('div', 'info');
 		    this.update();
 		    return this._div;
 		};
-		info.update = function (props) {
+		participationinfo.update = function (props) {
 		    this._div.innerHTML = '<h4>participation Rate</h4>' +  (props ?
 		        '<b>' + props.name + '</b><br />' + props.participation + '%'
 		        : 'Hover over a state');
 		};
-		info.addTo(map);
+		participationinfo.addTo(map);
 
 
 
 //adds leged to the bottom right
-var legend = L.control({position: 'bottomright'});
+var participationlegend = L.control({position: 'bottomright'});
 
-legend.onAdd = function (map) {
+participationlegend.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend'),
-        grades = [1, 2, 3, 4, 5],
+        grades = [40, 60, 63, 66, 69],
         labels = [];
 
 // a label with a colored square for each interval
@@ -100,4 +92,4 @@ legend.onAdd = function (map) {
     return div;
 };
 
-legend.addTo(map);
+participationlegend.addTo(map);
