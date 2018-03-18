@@ -152,7 +152,10 @@
     <!-- participation scripts-->
     <script src="js/participation.js"></script>
 
-    <script type="text/javascript">console.log("Hey Pao!");</script>
+    <script type="text/javascript">console.log(L.control.layers({}, {
+    	participation:participationlayer,
+    	unemployment:unemploymentlayer,
+    }).addTo(map))</script>
 
   </body>
 

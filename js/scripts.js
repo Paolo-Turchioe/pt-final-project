@@ -10,10 +10,7 @@ L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z
 }).addTo(map);
 
 // add layer control
-L.control.layers({}, {
-	participation:participationlayer,
-	unemployment:unemploymentlayer,
-}).addTo(map);
+
 
 //this allows for a way to disabale and enable the scroll when going over the map
 scrollWheelZoom: false
