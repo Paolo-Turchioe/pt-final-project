@@ -34,7 +34,7 @@ function highlightFeature(e) {
     });
 
 //the function above uses this to populate the top right with data
-		info.update(layer.feature.properties);
+		unemploymentinfo.update(layer.feature.properties);
 		if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
         layer.bringToFront();
 		}}
@@ -42,7 +42,7 @@ function highlightFeature(e) {
 //this function resets the white outline and data in the top right if you stop hovering over it
 function resetHighlight(e) {
     geojson.resetStyle(e.target);
-		info.update();
+		unemploymentinfo.update();
 }
 
 //state data layer
