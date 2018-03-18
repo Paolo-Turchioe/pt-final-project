@@ -41,13 +41,13 @@ function highlightFeature(e) {
 
 //this function resets the white outline and data in the top right if you stop hovering over it
 function resetHighlight(e) {
-    geojson.resetStyle(e.target);
+    unemploymentlayer.resetStyle(e.target);
 		unemploymentinfo.update();
 }
 
 //state data layer
-var geojson;
-geojson = L.geoJson(unemploymentdata, {
+var unemploymentlayer;
+unemploymentlayer = L.geoJson(unemploymentdata, {
     style: style,
     onEachFeature: onEachFeature
 }).addTo(map);

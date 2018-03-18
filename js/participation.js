@@ -40,13 +40,13 @@ function highlightFeature(e) {
 
 //this function resets the white outline and data in the top right if you stop hovering over it
 function resetHighlight(e) {
-    geojson.resetStyle(e.target);
+    participationlayer.resetStyle(e.target);
 		participationinfo.update();
 }
 
 //state data layer
-var geojson;
-geojson = L.geoJson(participationdata, {
+var participationlayer;
+participationlayer = L.geoJson(participationdata, {
     style: style,
     onEachFeature: onEachFeature
 }).addTo(map);
