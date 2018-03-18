@@ -1,6 +1,3 @@
-var participationlayer = L.layerGroup(participationdata);
-var unemploymentlayer = L.layerGroup(unemploymentdata);
-
 var map = L.map('my-map')
 		.setView([37.8, -96], 3);
 
@@ -14,8 +11,8 @@ L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z
 
 // add layer control
 L.control.layers({}, {
-	participation: participationlayer,
-	unemployment: unemploymentlayer,
+	participation:participationlayer,
+	unemployment:unemploymentlayer,
 }).addTo(map);
 
 //this allows for a way to disabale and enable the scroll when going over the map
