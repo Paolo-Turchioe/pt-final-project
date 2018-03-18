@@ -1,4 +1,4 @@
-L.geoJson(unemploymentdata).addTo(map);
+// L.geoJson(unemploymentdata).addTo(map);
 
 //this is basically an if/else statement, so if it's greater than 5 it would be the top hex, but if less it will go down to 4
 function getColor(d) {

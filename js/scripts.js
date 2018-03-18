@@ -1,12 +1,8 @@
-var participation=	import * as participation from '/js/participation.js'
-		});
-var unemployment=	import * as unemployment from '/js/Unemployment.js'
-		});
-var group1 = L.layerGroup(participation);
-var group2 = L.layerGroup(unemployment);
+// var group1 = L.layerGroup(participation);
+// var group2 = L.layerGroup(unemployment);
 
 var map = L.map('my-map',
-	{layers: [group1, group2]})
+	// {layers: [group1, group2]})
 		.setView([37.8, -96], 3);
 
 L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png', {

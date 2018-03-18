@@ -1,4 +1,4 @@
-L.geoJson(participationdata).addTo(map);
+// L.geoJson(participationdata).addTo(map);
 
 //this is basically an if/else statement, so if it's greater than 5 it would be the top hex, but if less it will go down to 4
 function getColor(d) {
