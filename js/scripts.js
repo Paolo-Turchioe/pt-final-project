@@ -9,9 +9,6 @@ L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z
 	ext: 'png'
 }).addTo(map);
 
-// add layer control
-
-
 //this allows for a way to disabale and enable the scroll when going over the map
 scrollWheelZoom: false
 map.once('focus', function() { map.scrollWheelZoom.enable(); });
@@ -23,3 +20,8 @@ map.on('click', function() {
     map.scrollWheelZoom.enable();
     }
   });
+
+	//reset button
+		$('.reset').click(function() {
+	  map.flyTo([37.8, -96], 3)
+	});

@@ -1,5 +1,5 @@
 //this is basically an if/else statement, so if it's greater than 5 it would be the top hex, but if less it will go down to 4
-function getColor(d) {
+function getparticipationcolor(d) {
     return d > 69  ? '#006d2c' :
            d > 66 ? '#2ca25f' :
            d > 63 ? '#66c2a4' :
@@ -11,7 +11,7 @@ function getColor(d) {
 //this colors the states according to their data and also includes other styling, like outlines
 function style(feature) {
     return {
-        fillColor: getColor(feature.properties.participation),
+        fillColor: getparticipationcolor(feature.properties.participation),
         weight: .5,
         opacity: 1,
         color: 'white',
@@ -38,7 +38,6 @@ function highlightFeature(e) {
         layer.bringToFront();
 		}}
 
-//this function resets the white outline and data in the top right if you stop hovering over it
 function resetHighlight(e) {
     participationlayer.resetStyle(e.target);
 		participationinfo.update();
@@ -49,8 +48,9 @@ var participationlayer;
 participationlayer = L.geoJson(participationdata, {
     style: style,
     onEachFeature: onEachFeature
-}).addTo(map);
+});
 
+//this function resets the white outline and data in the top right if you stop hovering over it
 function onEachFeature(feature, layer) {
     layer.on({
         mouseover: highlightFeature,
@@ -86,7 +86,7 @@ participationlegend.onAdd = function (map) {
 // a label with a colored square for each interval
     for (var i = 0; i < grades.length; i++) {
         div.innerHTML +=
-            '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+            '<i style="background:' + getparticipationcolor(grades[i] + 1) + '"></i> ' +
             grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
     }
     return div;

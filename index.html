@@ -95,7 +95,7 @@
     </div>
     <div class="row justify-content-md-center">
     <div class="col-md-3" align="center">
-      <h3></h3>
+      <p>Click map to disable or enable scrolling</p>
       <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
         About the Data
       </button>
@@ -152,10 +152,13 @@
     <!-- participation scripts-->
     <script src="js/participation.js"></script>
 
+    <!--// add layer control-->
     <script type="text/javascript">L.control.layers({}, {
     	participation:participationlayer,
     	unemployment:unemploymentlayer,
-    }).addTo(map)</script>
+    }).addTo(map)
+
+  </script>
 
   </body>
 
