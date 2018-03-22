@@ -1,11 +1,11 @@
 //this is basically an if/else statement, so if it's greater than 5 it would be the top hex, but if less it will go down to 4
 function getunemploymentcolor(d) {
-  return d > 5 ? '#006d2c' :
-    d > 4 ? '#2ca25f' :
-    d > 3 ? '#66c2a4' :
-    d > 2 ? '#99d8c9' :
-    d > 1 ? '#ccece6' :
-    d > 0 ? '#edf8fb' :
+  return d > 5 ? '#f6e8c3' :
+    d > 4 ? '#c7eae5' :
+    d > 3 ? '#5ab4ac' :
+    d > 2 ? '#01665e' :
+    d > 1 ? '#01665e' :
+    d > 0 ? '#01665e' :
     '#ffffff';
 }
 
@@ -74,7 +74,6 @@ unemploymentinfo.update = function(props) {
     '<b>' + props.name + '</b><br />' + props.unemployment + '%' :
     'Hover over a state');
 };
-// unemploymentinfo.addTo(map);
 
 //adds leged to the bottom right
 var unemploymentlegend = L.control({
@@ -83,7 +82,7 @@ var unemploymentlegend = L.control({
 
 unemploymentlegend.onAdd = function(map) {
   var div = L.DomUtil.create('div', 'info legend'),
-    grades = [1, 2, 3, 4, 5],
+    grades = [2, 3, 4, 5],
     labels = [];
 
   // a label with a colored square for each interval
@@ -94,4 +93,3 @@ unemploymentlegend.onAdd = function(map) {
   }
   return div;
 };
-// unemploymentlegend.addTo(map);

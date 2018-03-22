@@ -42,7 +42,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#intro">Introduction</a>
+            <a class="nav-link js-scroll-trigger" href="#intro">Background</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#my-map">Map</a>
@@ -58,8 +58,8 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto">
-            <h1 class="brand-heading">Final Project</h1>
-            <p class="intro-text">A look at unemployment and laborforce participation rates by state.</p>
+            <h1 class="brand-heading">Labor in the US</h1>
+            <p class="intro-text">This website explores the spatial distribution of unemployment and laborforce participation rates by state.</p>
             <a href="#intro" class="btn btn-circle js-scroll-trigger">
                 <i class="fa fa-angle-double-down animated"></i>
               </a>
@@ -76,9 +76,9 @@
         <div class="col-lg-8 mx-auto">
           <h4>Unemployment Rate vs Laborforce Participation Rate</h4>
           <p>While the unemployment rate measures how many people are looking for work; the laborforce participation rate measures how many people are out of work and not looking. If someone is too discouraged to actively look for work, they would not be
-            included in the unemployment rate but would show up in the laborforce participation rate.</p>
-          <p>Placeholder 2</p>
-          <p>Placeholder 3</p>
+            included in the unemployment rate but would show up in the laborforce participation rate. A low laborforce participation rate is not necessarily a bad sign. Students, retirees, stay at home parents, among others are not considered labor force participants.</p>
+          <h4>The Relationship Between the Two</h4>
+          <p>Although the unemployment rate is near historic lows, the labor force participation rate is stubbornly high. Generally states with low unemployment have higher laborforce participation, though there are some exceptions. Alaska has both relatively high unemployment and high labor force participation, and the Southeast has very low unemployment and low labor force participation.</p>
           <a href="#my-map" class="btn btn-circle js-scroll-trigger">
               <i class="fa fa-angle-double-down animated"></i>
             </a>
@@ -87,6 +87,7 @@
     </div>
   </section>
 
+  <h4 style="text-align: center;"> Select layers to see data</h4>
   <!-- Map Section -->
   <div id="my-map">
     <button class="reset" id="reset">Reset View</button>
@@ -156,10 +157,11 @@
 
   <!--// add mutual exclusive layers to prevent selecting both participation rate and unemployment rate-->
   <script type="text/javascript">
-var layers ={
-  "Participation Rate": participationlayer,
-  "Unemployment Rate": unemploymentlayer
-}  </script>
+    var layers = {
+      "Participation Rate": participationlayer,
+      "Unemployment Rate": unemploymentlayer
+    }
+  </script>
 
   <!--// add layer control...this is here due to a load order conflict-->
   <script type="text/javascript">
@@ -168,29 +170,32 @@ var layers ={
 
   <script type="text/javascript">
     // Add and remove legend from layers
-    map.on('baselayerchange', function (eventLayer) {
-    // Switch to the participation legend...
-       if (eventLayer.name === 'Participation Rate') {
-           this.removeControl(unemploymentlegend);
-           participationlegend.addTo(this);}
-      else { // Or switch to the unemployment legend...
-           this.removeControl(participationlegend);
-           unemploymentlegend.addTo(this);
-      }});
+    map.on('baselayerchange', function(eventLayer) {
+      // Switch to the participation legend...
+      if (eventLayer.name === 'Participation Rate') {
+        this.removeControl(unemploymentlegend);
+        participationlegend.addTo(this);
+      } else { // Or switch to the unemployment legend...
+        this.removeControl(participationlegend);
+        unemploymentlegend.addTo(this);
+      }
+    });
   </script>
 
   <script type="text/javascript">
     // Add and remove information summary from layers
-    map.on('baselayerchange', function (eventLayer) {
-    // Switch to the participation legend...
-       if (eventLayer.name === 'Participation Rate') {
-           this.removeControl(unemploymentinfo);
-           participationinfo.addTo(this);}
-      else { // Or switch to the unemployment legend...
-           this.removeControl(participationinfo);
-           unemploymentinfo.addTo(this);
-      }});
+    map.on('baselayerchange', function(eventLayer) {
+      // Switch to the participation legend...
+      if (eventLayer.name === 'Participation Rate') {
+        this.removeControl(unemploymentinfo);
+        participationinfo.addTo(this);
+      } else { // Or switch to the unemployment legend...
+        this.removeControl(participationinfo);
+        unemploymentinfo.addTo(this);
+      }
+    });
   </script>
 
 </body>
+
 </html>
