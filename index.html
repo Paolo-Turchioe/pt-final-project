@@ -42,7 +42,10 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#intro">Background</a>
+            <a class="nav-link js-scroll-trigger" href="#intro">Overview</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#charts">Charts</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#my-map">Map</a>
@@ -74,12 +77,13 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
+          <h1>Overview</h1>
           <h4>Unemployment Rate vs Laborforce Participation Rate</h4>
           <p>While the unemployment rate measures how many people are looking for work; the laborforce participation rate measures how many people are out of work and not looking. If someone is too discouraged to actively look for work, they would not be
             included in the unemployment rate but would show up in the laborforce participation rate. A low laborforce participation rate is not necessarily a bad sign. Students, retirees, stay at home parents, among others are not considered labor force participants.</p>
           <h4>The Relationship Between the Two</h4>
           <p>Although the unemployment rate is near historic lows, the labor force participation rate is stubbornly high. Generally states with low unemployment have higher laborforce participation, though there are some exceptions. Alaska has both relatively high unemployment and high labor force participation, and the Southeast has very low unemployment and low labor force participation.</p>
-          <a href="#my-map" class="btn btn-circle js-scroll-trigger">
+          <a href="#charts" class="btn btn-circle js-scroll-trigger">
               <i class="fa fa-angle-double-down animated"></i>
             </a>
         </div>
@@ -87,8 +91,29 @@
     </div>
   </section>
 
-  <h4 style="text-align: center;"> Select layers to see data</h4>
+  <!-- Charts Section -->
+  <section id="charts" class="content-section text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h1>Charts</h1>
+            <h4>Labor Force Participation Rate Over Time</h4>
+            <img src="img/laborforceparticipation.gif" align="center">
+            <h4>Unemployment Rate Over Time </h4>
+            <img src="img/unemployment.gif" align="center">
+            <p>Although the Unemployment Rate is near all times low, the Laborforce Participation rate has not recovered from its decline in 2011-2015.</p>
+            <p>Source:Bureau of Labor Statistics, U.S. Department of Labor, Databases, Tables & Calculators by Subject</p>
+            <a href="#my-map" class="btn btn-circle js-scroll-trigger">
+              <i class="fa fa-angle-double-down animated"></i>
+            </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
   <!-- Map Section -->
+  <h4 style="text-align: center;"> Select layers to see data</h4>
   <div id="my-map">
     <button class="reset" id="reset">Reset View</button>
   </div>
@@ -101,7 +126,6 @@
     </div>
   </div>
 
-
   <!--modal button at the bottom of the map that describes data sources-->
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -113,7 +137,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <p>Source: BLS Data 2017</p>
+          <p>Source: Bureau of Labor Statistics, U.S. Department of Labor, Local Area Unemployment Statistics</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Thank you</button>
@@ -185,11 +209,11 @@
   <script type="text/javascript">
     // Add and remove information summary from layers
     map.on('baselayerchange', function(eventLayer) {
-      // Switch to the participation legend...
+      // Switch to the participation info box...
       if (eventLayer.name === 'Participation Rate') {
         this.removeControl(unemploymentinfo);
         participationinfo.addTo(this);
-      } else { // Or switch to the unemployment legend...
+      } else { // Or switch to the unemployment info box...
         this.removeControl(participationinfo);
         unemploymentinfo.addTo(this);
       }

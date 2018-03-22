@@ -19,14 +19,6 @@
   color: dimgrey;
 }
 
-#unemploymentinfo {
-  position: absolute;
-  z-index: 1000;
-  bottom: 11px;
-  left: 56px;
-}
-
-
 
 h2 {
   margin: 0;
